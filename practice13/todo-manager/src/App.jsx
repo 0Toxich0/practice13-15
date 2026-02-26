@@ -1,0 +1,164 @@
+import { useState, useEffect } from 'react';
+import AddTodoForm from './components/AddTodoForm';
+import TodoFilters from './components/TodoFilters';
+import TodoItem from './components/TodoItem';
+
+function App() {
+  // Состояние задач (загружаем из localStorage)
+  const [todos, setTodos] = useState(() => {
+    const saved = localStorage.getItem('todos');
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  // Состояние фильтра
+  const [filter, setFilter] = useState('all');
+
+  // Состояние темы (светлая/тёмная)
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem('theme');
+    return savedTheme ? savedTheme : 'light';
+  });
+
+  // Сохраняем задачи в localStorage при изменении
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
+
+  // Сохраняем тему в localStorage
+  useEffect(() => {
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  // Добавление задачи
+  const addTodo = (text) => {
+    const newTodo = {
+      id: Date.now(),
+      text: text,
+      completed: false,
+    };
+    setTodos([...todos, newTodo]);
+  };
+
+  // Переключение статуса задачи
+  const toggleTodo = (id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
+  };
+
+  // Удаление задачи
+  const deleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
+  // Редактирование задачи
+  const editTodo = (id, newText) => {
+    setTodos(
+      todos.map((todo) => (todo.id === id ? { ...todo, text: newText } : todo))
+    );
+  };
+
+  // Фильтрация задач
+  const filteredTodos = todos.filter((todo) => {
+    if (filter === 'active') return !todo.completed;
+    if (filter === 'completed') return todo.completed;
+    return true; // 'all'
+  });
+
+  // Количество активных (невыполненных) задач
+  const activeCount = todos.filter((todo) => !todo.completed).length;
+
+  // Стили для всей страницы в зависимости от темы
+  const pageStyle = {
+    backgroundColor: theme === 'dark' ? '#333' : '#fff',
+    color: theme === 'dark' ? '#fff' : '#333',
+    minHeight: '100vh',
+    padding: '20px',
+    transition: 'all 0.3s',
+    fontFamily: 'Arial, sans-serif',
+  };
+
+  const containerStyle = {
+    maxWidth: '600px',
+    margin: '0 auto',
+  };
+
+  const buttonClearStyle = {
+    marginTop: '20px',
+    padding: '8px 16px',
+    background: '#dc3545',
+    color: 'white',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    width: '100%',
+  };
+
+  const themeButtonStyle = {
+    marginBottom: '20px',
+    padding: '8px 16px',
+    background: theme === 'dark' ? '#f0f0f0' : '#333',
+    color: theme === 'dark' ? '#333' : '#fff',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    display: 'block',
+    marginLeft: 'auto',
+  };
+
+  return (
+    <div style={pageStyle}>
+      <div style={containerStyle}>
+        <button
+          onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+          style={themeButtonStyle}
+        >
+          Переключить на {theme === 'light' ? 'тёмную' : 'светлую'} тему
+        </button>
+
+        <h1 style={{ textAlign: 'center', color: 'inherit' }}>Менеджер задач</h1>
+
+        <AddTodoForm onAdd={addTodo} theme={theme} />
+        <TodoFilters
+          filter={filter}
+          onFilterChange={setFilter}
+          activeCount={activeCount}
+          theme={theme}
+        />
+
+        {filteredTodos.length === 0 ? (
+          <p style={{ textAlign: 'center', color: theme === 'dark' ? '#aaa' : '#999' }}>
+            {filter === 'all'
+              ? 'Задач пока нет'
+              : filter === 'active'
+              ? 'Нет активных задач'
+              : 'Нет выполненных задач'}
+          </p>
+        ) : (
+          <ul style={{ listStyle: 'none', padding: 0 }}>
+            {filteredTodos.map((todo) => (
+              <TodoItem
+                key={todo.id}
+                task={todo}
+                onToggle={toggleTodo}
+                onDelete={deleteTodo}
+                onEdit={editTodo}
+                theme={theme}
+              />
+            ))}
+          </ul>
+        )}
+
+        {todos.length > 0 && (
+          <button onClick={() => setTodos([])} style={buttonClearStyle}>
+            Очистить всё
+          </button>
+        )}
+      </div>
+    </div>
+  );
+}
+
+export default App;
