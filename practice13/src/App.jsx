@@ -10,6 +10,7 @@ function App() {
   });
 
   const [filter, setFilter] = useState('all');
+
   const [theme, setTheme] = useState(() => {
     const savedTheme = localStorage.getItem('theme');
     return savedTheme ? savedTheme : 'light';
@@ -53,16 +54,19 @@ function App() {
   const filteredTodos = todos.filter((todo) => {
     if (filter === 'active') return !todo.completed;
     if (filter === 'completed') return todo.completed;
-    return true;
+    return true; 
   });
 
   const activeCount = todos.filter((todo) => !todo.completed).length;
 
   const pageStyle = {
-    backgroundColor: theme === 'dark' ? '#333' : '#fff',
-    color: theme === 'dark' ? '#fff' : '#333',
-    minHeight: '100vh',
+    backgroundColor: theme === 'dark' ? '#1e1e1e' : '#ffffff',
+    color: theme === 'dark' ? '#f0f0f0' : '#333333',
+    minHeight: '100vh', 
+    width: '100%',
+    margin: 0,
     padding: '20px',
+    boxSizing: 'border-box',
     transition: 'all 0.3s',
     fontFamily: 'Arial, sans-serif',
   };
@@ -98,6 +102,7 @@ function App() {
   return (
     <div style={pageStyle}>
       <div style={containerStyle}>
+        {}
         <button
           onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
           style={themeButtonStyle}
@@ -107,7 +112,10 @@ function App() {
 
         <h1 style={{ textAlign: 'center', color: 'inherit' }}>Менеджер задач</h1>
 
+        {}
         <AddTodoForm onAdd={addTodo} theme={theme} />
+
+        {}
         <TodoFilters
           filter={filter}
           onFilterChange={setFilter}
@@ -115,6 +123,7 @@ function App() {
           theme={theme}
         />
 
+        {}
         {filteredTodos.length === 0 ? (
           <p style={{ textAlign: 'center', color: theme === 'dark' ? '#aaa' : '#999' }}>
             {filter === 'all'
@@ -131,13 +140,14 @@ function App() {
                 task={todo}
                 onToggle={toggleTodo}
                 onDelete={deleteTodo}
-                onEdit={editTodo}
+                onEdit={editTodo}        
                 theme={theme}
               />
             ))}
           </ul>
         )}
 
+        {}
         {todos.length > 0 && (
           <button onClick={() => setTodos([])} style={clearButtonStyle}>
             Очистить всё
