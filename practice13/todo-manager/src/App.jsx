@@ -4,32 +4,25 @@ import TodoFilters from './components/TodoFilters';
 import TodoItem from './components/TodoItem';
 
 function App() {
-  // Состояние задач (загружаем из localStorage)
   const [todos, setTodos] = useState(() => {
     const saved = localStorage.getItem('todos');
     return saved ? JSON.parse(saved) : [];
   });
 
-  // Состояние фильтра
   const [filter, setFilter] = useState('all');
-
-  // Состояние темы (светлая/тёмная)
   const [theme, setTheme] = useState(() => {
     const savedTheme = localStorage.getItem('theme');
     return savedTheme ? savedTheme : 'light';
   });
 
-  // Сохраняем задачи в localStorage при изменении
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);
 
-  // Сохраняем тему в localStorage
   useEffect(() => {
     localStorage.setItem('theme', theme);
   }, [theme]);
 
-  // Добавление задачи
   const addTodo = (text) => {
     const newTodo = {
       id: Date.now(),
@@ -39,7 +32,6 @@ function App() {
     setTodos([...todos, newTodo]);
   };
 
-  // Переключение статуса задачи
   const toggleTodo = (id) => {
     setTodos(
       todos.map((todo) =>
@@ -48,29 +40,24 @@ function App() {
     );
   };
 
-  // Удаление задачи
   const deleteTodo = (id) => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
-  // Редактирование задачи
   const editTodo = (id, newText) => {
     setTodos(
       todos.map((todo) => (todo.id === id ? { ...todo, text: newText } : todo))
     );
   };
 
-  // Фильтрация задач
   const filteredTodos = todos.filter((todo) => {
     if (filter === 'active') return !todo.completed;
     if (filter === 'completed') return todo.completed;
-    return true; // 'all'
+    return true;
   });
 
-  // Количество активных (невыполненных) задач
   const activeCount = todos.filter((todo) => !todo.completed).length;
 
-  // Стили для всей страницы в зависимости от темы
   const pageStyle = {
     backgroundColor: theme === 'dark' ? '#333' : '#fff',
     color: theme === 'dark' ? '#fff' : '#333',
@@ -85,17 +72,6 @@ function App() {
     margin: '0 auto',
   };
 
-  const buttonClearStyle = {
-    marginTop: '20px',
-    padding: '8px 16px',
-    background: '#dc3545',
-    color: 'white',
-    border: 'none',
-    borderRadius: '4px',
-    cursor: 'pointer',
-    width: '100%',
-  };
-
   const themeButtonStyle = {
     marginBottom: '20px',
     padding: '8px 16px',
@@ -106,6 +82,17 @@ function App() {
     cursor: 'pointer',
     display: 'block',
     marginLeft: 'auto',
+  };
+
+  const clearButtonStyle = {
+    marginTop: '20px',
+    padding: '8px 16px',
+    background: '#dc3545',
+    color: 'white',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    width: '100%',
   };
 
   return (
@@ -152,7 +139,7 @@ function App() {
         )}
 
         {todos.length > 0 && (
-          <button onClick={() => setTodos([])} style={buttonClearStyle}>
+          <button onClick={() => setTodos([])} style={clearButtonStyle}>
             Очистить всё
           </button>
         )}

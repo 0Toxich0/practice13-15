@@ -22,7 +22,6 @@ function TodoItem({ task, onToggle, onDelete, onEdit, theme }) {
     }
   };
 
-  // Стили в зависимости от темы
   const liStyle = {
     display: 'flex',
     alignItems: 'center',

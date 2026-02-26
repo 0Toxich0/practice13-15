@@ -11,7 +11,6 @@ function AddTodoForm({ onAdd, theme }) {
     }
   };
 
-  // Стили, зависящие от темы
   const inputStyle = {
     padding: '8px',
     width: '300px',

@@ -1,7 +1,6 @@
 function TodoFilters({ filter, onFilterChange, activeCount, theme }) {
   const filterTypes = ['all', 'active', 'completed'];
 
-  // Базовые цвета для кнопок в зависимости от темы
   const buttonBaseStyle = {
     margin: '0 5px',
     padding: '5px 10px',
