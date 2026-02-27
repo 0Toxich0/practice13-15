@@ -1,7 +1,7 @@
 function About() {
   return (
     <section id="about" className="section py-6" style={{ 
-      background: '#2c5a3a',  // Тёмно-зелёный однородный фон
+      background: '#212f3c',  // Тёмно-сине-серый цвет (вместо 2c5a3a)
       color: 'white' 
     }}>
       <div className="container">
