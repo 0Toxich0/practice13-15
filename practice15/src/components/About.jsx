@@ -1,13 +1,13 @@
 function About() {
   return (
-    <section id="about" className="section py-6" style={{
-      background: 'linear-gradient(90deg, rgba(72, 199, 142, 0.9) 0%, rgba(72, 199, 142, 0.7) 100%), url("https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80") center/cover no-repeat',
-      color: 'white'
+    <section id="about" className="section py-6" style={{ 
+      background: '#2c5a3a',  // Тёмно-зелёный однородный фон
+      color: 'white' 
     }}>
       <div className="container">
-        <div className="section-header has-text-centered mb-6">
+        <div className="has-text-centered mb-6">
           <h2 className="title is-2 has-text-white mt-3">Почему FreshFood?</h2>
-          <div className="divider"></div>
+          <div className="divider" style={{ height: '3px', width: '60px', background: '#48c78e', margin: '1.25rem auto', borderRadius: '3px' }}></div>
         </div>
         
         <div className="columns is-vcentered">
@@ -50,17 +50,17 @@ function About() {
           </div>
           
           <div className="column is-half">
-            <div className="card about-image-card">
-              <div className="card-image">
-                <figure className="image is-4by3">
-                  <img src="https://images.apteka.ru/kak-sostavit-ratsion-dlya-zdorovogo-pitaniya-bez-zhstkikh-ogranicheniy_DetailPicture_-1922120651.webp" alt="Свежие продукты" />
-                </figure>
-              </div>
-              <div className="card-content has-background-light">
-                <div className="content has-text-centered">
-                  <i className="fas fa-check-circle has-text-success mr-2"></i>
-                  <span className="has-text-dark has-text-weight-bold">100% натуральные ингредиенты</span>
-                </div>
+            <div className="box" style={{ 
+              background: 'rgba(255,255,255,0.15)', 
+              borderRadius: '12px',
+              padding: '2rem',
+              backdropFilter: 'blur(10px)',
+              border: '1px solid rgba(255,255,255,0.2)'
+            }}>
+              <div className="content has-text-centered">
+                <i className="fas fa-check-circle has-text-success fa-3x mb-3"></i>
+                <h3 className="title is-3 has-text-white">100%</h3>
+                <p className="has-text-white is-size-5">натуральные ингредиенты</p>
               </div>
             </div>
           </div>

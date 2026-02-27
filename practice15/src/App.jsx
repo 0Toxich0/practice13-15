@@ -11,7 +11,9 @@ import Footer from './components/Footer'
 function App() {
   const [menuItems, setMenuItems] = useState(() => {
     const saved = localStorage.getItem('freshfood-menu')
-    return saved ? JSON.parse(saved) : [
+    
+    // Стандартные позиции меню (если нет сохранённых)
+    const defaultItems = [
       {
         id: 1,
         name: 'Лёгкий',
@@ -37,6 +39,8 @@ function App() {
         category: 'Силовой'
       }
     ]
+    
+    return saved ? JSON.parse(saved) : defaultItems
   })
 
   const [lastDeleted, setLastDeleted] = useState(null)
