@@ -1,34 +1,156 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from 'react'
+import AddTodoForm from './components/AddTodoForm'
+import TodoFilters from './components/TodoFilters'
+import TodoItem from './components/TodoItem'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [todos, setTodos] = useState(() => {
+    const saved = localStorage.getItem('todos')
+    return saved ? JSON.parse(saved) : []
+  })
+
+  const [filter, setFilter] = useState('all')
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem('theme')
+    return savedTheme ? savedTheme : 'light'
+  })
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos))
+  }, [todos])
+
+  useEffect(() => {
+    localStorage.setItem('theme', theme)
+  }, [theme])
+
+  const addTodo = (text) => {
+    const newTodo = {
+      id: Date.now(),
+      text: text,
+      completed: false
+    }
+    setTodos([...todos, newTodo])
+  }
+
+  const toggleTodo = (id) => {
+    setTodos(
+      todos.map(todo =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    )
+  }
+
+  const deleteTodo = (id) => {
+    setTodos(todos.filter(todo => todo.id !== id))
+  }
+
+  const editTodo = (id, newText) => {
+    setTodos(
+      todos.map(todo =>
+        todo.id === id ? { ...todo, text: newText } : todo
+      )
+    )
+  }
+
+  const filteredTodos = todos.filter(todo => {
+    if (filter === 'active') return !todo.completed
+    if (filter === 'completed') return todo.completed
+    return true
+  })
+
+  const activeCount = todos.filter(todo => !todo.completed).length
+
+  const pageStyle = {
+    backgroundColor: theme === 'dark' ? '#1e1e1e' : '#ffffff',
+    color: theme === 'dark' ? '#f0f0f0' : '#333333',
+    minHeight: '100vh',
+    width: '100%',
+    margin: 0,
+    padding: '20px',
+    boxSizing: 'border-box',
+    transition: 'all 0.3s',
+    fontFamily: 'Arial, sans-serif'
+  }
+
+  const containerStyle = {
+    maxWidth: '600px',
+    margin: '0 auto'
+  }
+
+  const themeButtonStyle = {
+    marginBottom: '20px',
+    padding: '8px 16px',
+    background: theme === 'dark' ? '#f0f0f0' : '#333',
+    color: theme === 'dark' ? '#333' : '#fff',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    display: 'block',
+    marginLeft: 'auto'
+  }
+
+  const clearButtonStyle = {
+    marginTop: '20px',
+    padding: '8px 16px',
+    background: '#dc3545',
+    color: 'white',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    width: '100%'
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+    <div style={pageStyle}>
+      <div style={containerStyle}>
+        <button
+          onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+          style={themeButtonStyle}
+        >
+          Переключить на {theme === 'light' ? 'тёмную' : 'светлую'} тему
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+
+        <h1 style={{ textAlign: 'center', color: 'inherit' }}>Менеджер задач</h1>
+
+        <AddTodoForm onAdd={addTodo} theme={theme} />
+        
+        <TodoFilters
+          filter={filter}
+          onFilterChange={setFilter}
+          activeCount={activeCount}
+          theme={theme}
+        />
+
+        {filteredTodos.length === 0 ? (
+          <p style={{ textAlign: 'center', color: theme === 'dark' ? '#aaa' : '#999' }}>
+            {filter === 'all'
+              ? 'Задач пока нет'
+              : filter === 'active'
+              ? 'Нет активных задач'
+              : 'Нет выполненных задач'}
+          </p>
+        ) : (
+          <ul style={{ listStyle: 'none', padding: 0 }}>
+            {filteredTodos.map(todo => (
+              <TodoItem
+                key={todo.id}
+                task={todo}
+                onToggle={toggleTodo}
+                onDelete={deleteTodo}
+                onEdit={editTodo}
+                theme={theme}
+              />
+            ))}
+          </ul>
+        )}
+
+        {todos.length > 0 && (
+          <button onClick={() => setTodos([])} style={clearButtonStyle}>
+            Очистить всё
+          </button>
+        )}
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   )
 }
 
