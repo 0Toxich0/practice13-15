@@ -39,6 +39,8 @@ function App() {
     ]
   })
 
+  const [lastDeleted, setLastDeleted] = useState(null)
+
   useEffect(() => {
     localStorage.setItem('freshfood-menu', JSON.stringify(menuItems))
   }, [menuItems])
@@ -48,8 +50,20 @@ function App() {
   }
 
   const deleteMenuItem = (id) => {
-    if (window.confirm('Удалить позицию из меню?')) {
+    const itemToDelete = menuItems.find(item => item.id === id)
+    if (window.confirm(`Удалить "${itemToDelete.name}" из меню?`)) {
+      setLastDeleted(itemToDelete)
       setMenuItems(menuItems.filter(item => item.id !== id))
+    }
+  }
+
+  const restoreLastDeleted = () => {
+    if (lastDeleted) {
+      setMenuItems([...menuItems, lastDeleted])
+      setLastDeleted(null)
+      alert(`Восстановлено: ${lastDeleted.name}`)
+    } else {
+      alert('Нет удалённых элементов для восстановления')
     }
   }
 
@@ -63,6 +77,7 @@ function App() {
         menuItems={menuItems} 
         onAdd={addMenuItem} 
         onDelete={deleteMenuItem}
+        onRestore={restoreLastDeleted}
       />
       <Reviews />
       <Order />

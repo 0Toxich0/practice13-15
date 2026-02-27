@@ -55,7 +55,7 @@ function AddMenuItem({ onAdd }) {
               <input 
                 className="input" 
                 type="text" 
-                placeholder="Лёгкий" 
+                placeholder="Например: Лёгкий, Спортивный, Вегетарианский" 
                 value={formData.name} 
                 onChange={(e) => setFormData({...formData, name: e.target.value})} 
                 required 
@@ -66,6 +66,9 @@ function AddMenuItem({ onAdd }) {
                   boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.05)'
                 }}
               />
+              <p className="help" style={{ color: '#666666', fontSize: '0.85rem', marginTop: '0.25rem' }}>
+                Например: Лёгкий, Спортивный, Вегетарианский
+              </p>
             </div>
           </div>
           
@@ -95,7 +98,7 @@ function AddMenuItem({ onAdd }) {
               <label className="label" style={{ color: '#333333', fontWeight: '500' }}>Описание</label>
               <textarea 
                 className="textarea" 
-                placeholder="Описание рациона..." 
+                placeholder="Опишите состав, калорийность, особенности рациона..." 
                 value={formData.description} 
                 onChange={(e) => setFormData({...formData, description: e.target.value})} 
                 required 
@@ -107,6 +110,9 @@ function AddMenuItem({ onAdd }) {
                 }}
                 rows="3"
               />
+              <p className="help" style={{ color: '#666666', fontSize: '0.85rem', marginTop: '0.25rem' }}>
+                Например: 1500 ккал, курица с овощами, без глютена
+              </p>
             </div>
           </div>
           
@@ -116,7 +122,7 @@ function AddMenuItem({ onAdd }) {
               <input 
                 className="input" 
                 type="number" 
-                placeholder="1200" 
+                placeholder="Например: 1200, 1500, 1800" 
                 value={formData.price} 
                 onChange={(e) => setFormData({...formData, price: e.target.value})} 
                 required 
@@ -127,6 +133,9 @@ function AddMenuItem({ onAdd }) {
                   boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.05)'
                 }}
               />
+              <p className="help" style={{ color: '#666666', fontSize: '0.85rem', marginTop: '0.25rem' }}>
+                Укажите стоимость в рублях за один день
+              </p>
             </div>
           </div>
           
@@ -136,7 +145,7 @@ function AddMenuItem({ onAdd }) {
               <input 
                 className="input" 
                 type="url" 
-                placeholder="https://..." 
+                placeholder="https://example.com/image.jpg" 
                 value={formData.image} 
                 onChange={(e) => setFormData({...formData, image: e.target.value})} 
                 required 
@@ -147,6 +156,9 @@ function AddMenuItem({ onAdd }) {
                   boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.05)'
                 }}
               />
+              <p className="help" style={{ color: '#666666', fontSize: '0.85rem', marginTop: '0.25rem' }}>
+                Вставьте прямую ссылку на изображение блюда
+              </p>
             </div>
           </div>
         </div>
@@ -160,7 +172,9 @@ function AddMenuItem({ onAdd }) {
               color: 'white', 
               border: 'none',
               fontWeight: '500',
-              padding: '0.75rem 1.5rem'
+              padding: '0.75rem 1.5rem',
+              borderRadius: '4px',
+              cursor: 'pointer'
             }}
           >
             Добавить в меню
@@ -176,7 +190,9 @@ function AddMenuItem({ onAdd }) {
               color: '#333333', 
               border: '1px solid #dbdbdb',
               fontWeight: '500',
-              padding: '0.75rem 1.5rem'
+              padding: '0.75rem 1.5rem',
+              borderRadius: '4px',
+              cursor: 'pointer'
             }}
           >
             Очистить
