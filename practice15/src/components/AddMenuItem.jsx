@@ -60,7 +60,7 @@ function AddMenuItem({ onAdd }) {
                 onChange={(e) => setFormData({...formData, name: e.target.value})} 
                 required 
                 style={{ 
-                  borderColor: '#dbdbdb', 
+                  borderColor: '#7e7e7e', 
                   color: '#333333',
                   backgroundColor: '#ffffff',
                   boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.05)'
@@ -81,7 +81,7 @@ function AddMenuItem({ onAdd }) {
                   onChange={(e) => setFormData({...formData, category: e.target.value})}
                   style={{ 
                     color: '#333333', 
-                    borderColor: '#dbdbdb',
+                    borderColor: '#7e7e7e',
                     backgroundColor: '#ffffff'
                   }}
                 >
@@ -103,7 +103,7 @@ function AddMenuItem({ onAdd }) {
                 onChange={(e) => setFormData({...formData, description: e.target.value})} 
                 required 
                 style={{ 
-                  borderColor: '#dbdbdb', 
+                  borderColor: '#7e7e7e', 
                   color: '#333333',
                   backgroundColor: '#ffffff',
                   boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.05)'
@@ -127,7 +127,7 @@ function AddMenuItem({ onAdd }) {
                 onChange={(e) => setFormData({...formData, price: e.target.value})} 
                 required 
                 style={{ 
-                  borderColor: '#dbdbdb', 
+                  borderColor: '#7e7e7e', 
                   color: '#333333',
                   backgroundColor: '#ffffff',
                   boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.05)'
@@ -150,7 +150,7 @@ function AddMenuItem({ onAdd }) {
                 onChange={(e) => setFormData({...formData, image: e.target.value})} 
                 required 
                 style={{ 
-                  borderColor: '#dbdbdb', 
+                  borderColor: '#7e7e7e', 
                   color: '#333333',
                   backgroundColor: '#ffffff',
                   boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.05)'
