@@ -26,9 +26,36 @@
             .hero .title.is-1 { font-size: 2rem; }
             .buttons { flex-direction: column; align-items: center; }
             .buttons .button { width: 100%; max-width: 300px; margin-bottom: 0.75rem; }
+            .active-page {
+            font-weight: bold;
+            color: #48c78e !important;
+            border-bottom: 2px solid #48c78e;
+          }
+
+          .navbar-item.active-page {
+            background-color: transparent;
+          }
+
+          /* Стили для карточек преимуществ */
+          .advantage-card {
+            transition: transform 0.3s;
+          }
+          .advantage-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+          }
+
+          /* Стили для карточек меню */
+          .card {
+            transition: transform 0.3s;
+          }
+          .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+          }
         }
     </style>
-  <script type="module" crossorigin src="/practice13-16/practice15/assets/index-5sgdgRnm.js"></script>
+  <script type="module" crossorigin src="/practice13-16/practice15/assets/index-Up1dy6tV.js"></script>
 </head>
 <body>
     <div id="root"></div>
