@@ -32,7 +32,7 @@ function MenuManager({ menuItems, onAdd, onDelete }) {
           background: '#ffffff', 
           boxShadow: '0 2px 8px rgba(0,0,0,0.1)', 
           borderRadius: '8px',
-          border: '1px solid #e0e0e0'
+          border: '1px solid #5e5e5e'
         }}>
           <div className="columns">
             <div className="column">
