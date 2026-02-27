@@ -21,15 +21,12 @@ function MenuManager({ menuItems, onAdd, onDelete }) {
     <section id="menu" className="section py-6" style={{ background: 'linear-gradient(135deg, #2c3e50 0%, #1a252f 100%)' }}>
       <div className="container">
         <div className="section-header has-text-centered mb-6">
-          <h2 className="title is-2 has-text-white mt-3">Управление меню</h2>
-          <div className="divider" style={{ height: '3px', width: '60px', background: '#48c78e', margin: '1.25rem auto' }}></div>
-          <p className="subtitle is-5 has-text-light">Добавляйте, сортируйте и управляйте позициями меню</p>
+          <h2 className="title is-2 has-text-white mt-3">Популярные рационы</h2>
+          <div className="divider"></div>
         </div>
 
-        {/* Секция добавления */}
         <AddMenuItem onAdd={onAdd} />
 
-        {/* Фильтры и сортировка */}
         <div className="box mb-5 p-4">
           <div className="columns">
             <div className="column">
@@ -60,7 +57,6 @@ function MenuManager({ menuItems, onAdd, onDelete }) {
           </div>
         </div>
 
-        {/* Список позиций меню */}
         {sortedAndFilteredItems.length === 0 ? (
           <div className="notification is-warning has-text-centered">
             Нет позиций в этой категории. Добавьте новую!

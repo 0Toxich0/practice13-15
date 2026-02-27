@@ -13,7 +13,15 @@ function Reviews() {
               <div className="media">
                 <div className="media-left">
                   <figure className="image is-48x48">
-                    <img className="is-rounded" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Мария" />
+                    <img 
+                      className="is-rounded" 
+                      src="/src/assets/avatar/1.avif" 
+                      alt="Мария"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = 'https://randomuser.me/api/portraits/women/44.jpg';
+                      }}
+                    />
                   </figure>
                 </div>
                 <div className="media-content">
@@ -30,7 +38,15 @@ function Reviews() {
               <div className="media">
                 <div className="media-left">
                   <figure className="image is-48x48">
-                    <img className="is-rounded" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Алексей" />
+                    <img 
+                      className="is-rounded" 
+                      src="/src/assets/avatar/2.avif" 
+                      alt="Алексей"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = 'https://randomuser.me/api/portraits/men/32.jpg';
+                      }}
+                    />
                   </figure>
                 </div>
                 <div className="media-content">

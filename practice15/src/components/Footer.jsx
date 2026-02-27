@@ -6,19 +6,16 @@ function Footer() {
           <div className="column">
             <h3 className="title is-4 has-text-white mb-4">FreshFood</h3>
             <p className="mb-3 has-text-light">Здоровое питание с доставкой по Москве и области.</p>
-            <p className="mb-2 has-text-light">
-              <i className="fas fa-phone mr-2"></i> +7 (999) 123-45-67
-            </p>
-            <p className="has-text-light">
-              <i className="fas fa-envelope mr-2"></i> hello@freshfood.ru
-            </p>
+            <p className="mb-2 has-text-light"><i className="fas fa-phone mr-2"></i> +7 (999) 123-45-67</p>
+            <p className="has-text-light"><i className="fas fa-envelope mr-2"></i> hello@freshfood.ru</p>
           </div>
           
           <div className="column">
-            <h4 className="title is-5 has-text-white mb-4">Навигация</h4>
+            <h4 className="title is-5 has-text-white mb-4">Быстрые ссылки</h4>
             <p><a href="#about" className="has-text-light">О нас</a></p>
             <p><a href="#menu" className="has-text-light">Меню</a></p>
-            <p><a href="#add" className="has-text-light">Добавить позицию</a></p>
+            <p><a href="#reviews" className="has-text-light">Отзывы</a></p>
+            <p><a href="#order" className="has-text-light">Заказать</a></p>
           </div>
           
           <div className="column">

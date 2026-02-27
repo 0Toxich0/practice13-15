@@ -7,7 +7,7 @@ function About() {
       <div className="container">
         <div className="section-header has-text-centered mb-6">
           <h2 className="title is-2 has-text-white mt-3">Почему FreshFood?</h2>
-          <div className="divider" style={{ height: '3px', width: '60px', background: '#48c78e', margin: '1.25rem auto' }}></div>
+          <div className="divider"></div>
         </div>
         
         <div className="columns is-vcentered">
@@ -50,7 +50,7 @@ function About() {
           </div>
           
           <div className="column is-half">
-            <div className="card" style={{ borderRadius: '12px', overflow: 'hidden' }}>
+            <div className="card about-image-card">
               <div className="card-image">
                 <figure className="image is-4by3">
                   <img src="https://images.apteka.ru/kak-sostavit-ratsion-dlya-zdorovogo-pitaniya-bez-zhstkikh-ogranicheniy_DetailPicture_-1922120651.webp" alt="Свежие продукты" />

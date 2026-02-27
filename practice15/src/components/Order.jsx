@@ -17,27 +17,21 @@ function Order() {
           <div className="field">
             <div className="control has-icons-left">
               <input className="input is-medium" type="text" placeholder="Ваше имя" required />
-              <span className="icon is-small is-left">
-                <i className="fas fa-user"></i>
-              </span>
+              <span className="icon is-small is-left"><i className="fas fa-user"></i></span>
             </div>
           </div>
           
           <div className="field">
             <div className="control has-icons-left">
               <input className="input is-medium" type="email" placeholder="Ваш email" required />
-              <span className="icon is-small is-left">
-                <i className="fas fa-envelope"></i>
-              </span>
+              <span className="icon is-small is-left"><i className="fas fa-envelope"></i></span>
             </div>
           </div>
           
           <div className="field">
             <div className="control has-icons-left">
               <input className="input is-medium" type="tel" placeholder="Ваш телефон" required />
-              <span className="icon is-small is-left">
-                <i className="fas fa-phone"></i>
-              </span>
+              <span className="icon is-small is-left"><i className="fas fa-phone"></i></span>
             </div>
           </div>
           

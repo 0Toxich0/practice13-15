@@ -28,7 +28,10 @@ function Navbar() {
             <a className="navbar-item active-page" href="/practice13-16/practice15/">Главная</a>
             <a className="navbar-item" href="#about">О нас</a>
             <a className="navbar-item" href="#menu">Меню</a>
-            <a className="navbar-item" href="#add">Добавить</a>
+            <a className="navbar-item" href="#reviews">Отзывы</a>
+            <a className="navbar-item" href="#order">
+              <span className="button is-success is-rounded is-small">Заказать</span>
+            </a>
           </div>
         </div>
       </div>

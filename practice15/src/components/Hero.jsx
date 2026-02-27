@@ -17,9 +17,12 @@ function Hero() {
                 Ежедневные рационы от шеф-повара. Без сахара, глютена и консервантов.
               </h2>
               <div className="buttons is-centered">
-                <a href="#menu" className="button is-light is-medium is-rounded">
-                  <span className="has-text-success">Посмотреть меню</span>
+                <a href="#order" className="button is-light is-medium is-rounded">
+                  <span className="has-text-success">Заказать пробный день</span>
                   <span className="icon"><i className="fas fa-arrow-right has-text-success"></i></span>
+                </a>
+                <a href="#menu" className="button is-outlined is-light is-medium is-rounded">
+                  <span className="has-text-white">Посмотреть меню</span>
                 </a>
               </div>
             </div>
