@@ -1,10 +1,60 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>practice15</title>
+    <title>FreshFood | Менеджер меню</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+      body, html, #root {
+        margin: 0;
+        padding: 0;
+        min-height: 100%;
+        width: 100%;
+      }
+      .section {
+        padding: 3rem 1.5rem;
+      }
+      .hero.is-fullheight-with-navbar {
+        min-height: calc(100vh - 3.25rem);
+      }
+      .menu-card {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        border-radius: 12px;
+        overflow: hidden;
+        transition: transform 0.3s;
+      }
+      .menu-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      }
+      .menu-card .card-image {
+        height: 200px;
+        overflow: hidden;
+      }
+      .menu-card .card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .menu-card .card-content {
+        flex-grow: 1;
+        background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+        color: white;
+      }
+      .active-page {
+        font-weight: bold;
+        color: #48c78e !important;
+        border-bottom: 2px solid #48c78e;
+      }
+      .sort-btn {
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>

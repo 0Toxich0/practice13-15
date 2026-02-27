@@ -1,118 +1,67 @@
 import { useState, useEffect } from 'react'
-import AddBookForm from './components/AddBookForm'
-import BookFilters from './components/BookFilters'
-import BookCard from './components/BookCard'
+import Navbar from './components/Navbar'
+import Hero from './components/Hero'
+import About from './components/About'
+import MenuManager from './components/MenuManager'
+import Footer from './components/Footer'
 
 function App() {
-  const [books, setBooks] = useState(() => {
-    const saved = localStorage.getItem('books')
-    return saved ? JSON.parse(saved) : []
+  const [menuItems, setMenuItems] = useState(() => {
+    const saved = localStorage.getItem('freshfood-menu')
+    return saved ? JSON.parse(saved) : [
+      {
+        id: 1,
+        name: 'Лёгкий',
+        description: '1500 ккал в день. Идеально для похудения и детокса.',
+        price: 1200,
+        image: 'https://optim.tildacdn.com/stor6632-3138-4534-b765-326636336138/-/format/webp/11023158.jpg',
+        category: 'Лёгкий'
+      },
+      {
+        id: 2,
+        name: 'Стандартный',
+        description: '2000 ккал в день. Сбалансированное питание для поддержания формы.',
+        price: 1500,
+        image: 'https://static.tildacdn.com/stor3861-6230-4333-b434-363137393833/53858849.jpg',
+        category: 'Стандартный'
+      },
+      {
+        id: 3,
+        name: 'Силовой',
+        description: '2500 ккал в день. Для спортсменов и активного образа жизни.',
+        price: 1800,
+        image: 'https://optim.tildacdn.com/stor3833-3932-4365-a135-336237373362/-/format/webp/82643418.jpg',
+        category: 'Силовой'
+      }
+    ]
   })
-
-  const [filter, setFilter] = useState('all')
-  const [searchQuery, setSearchQuery] = useState('')
 
   useEffect(() => {
-    localStorage.setItem('books', JSON.stringify(books))
-  }, [books])
+    localStorage.setItem('freshfood-menu', JSON.stringify(menuItems))
+  }, [menuItems])
 
-  const addBook = (bookData) => {
-    const newBook = {
-      id: Date.now(),
-      ...bookData,
-      completed: false,
-      rating: 0,
-      favorite: false
+  const addMenuItem = (newItem) => {
+    setMenuItems([...menuItems, { ...newItem, id: Date.now() }])
+  }
+
+  const deleteMenuItem = (id) => {
+    if (window.confirm('Удалить позицию из меню?')) {
+      setMenuItems(menuItems.filter(item => item.id !== id))
     }
-    setBooks([...books, newBook])
-  }
-
-  const toggleBook = (id) => {
-    setBooks(books.map(book => {
-      if (book.id === id) {
-        const completed = !book.completed
-        return { ...book, completed, rating: completed ? book.rating : 0 }
-      }
-      return book
-    }))
-  }
-
-  const rateBook = (id, rating) => {
-    setBooks(books.map(book => 
-      book.id === id && book.completed ? { ...book, rating } : book
-    ))
-  }
-
-  const deleteBook = (id) => {
-    if (window.confirm('Удалить книгу?')) {
-      setBooks(books.filter(book => book.id !== id))
-    }
-  }
-
-  const toggleFavorite = (id) => {
-    setBooks(books.map(book =>
-      book.id === id ? { ...book, favorite: !book.favorite } : book
-    ))
-  }
-
-  const filteredBooks = books.filter(book => {
-    if (filter === 'unread') return !book.completed
-    if (filter === 'read') return book.completed
-    return true
-  }).filter(book => {
-    if (!searchQuery) return true
-    const query = searchQuery.toLowerCase()
-    return book.title.toLowerCase().includes(query) || 
-           book.author.toLowerCase().includes(query)
-  })
-
-  const stats = {
-    total: books.length,
-    completed: books.filter(b => b.completed).length,
-    favorites: books.filter(b => b.favorite).length
   }
 
   return (
-    <div className="container py-4">
-      <header className="text-center bg-primary text-white p-4 rounded-3 mb-4">
-        <h1 className="display-4">Менеджер книг</h1>
-        <p className="lead">Управляй своей библиотекой</p>
-      </header>
-
-      <main className="bg-white p-4 rounded-3 shadow">
-        <AddBookForm onAdd={addBook} />
-        
-        <BookFilters
-          filter={filter}
-          onFilterChange={setFilter}
-          searchQuery={searchQuery}
-          onSearchChange={setSearchQuery}
-          stats={stats}
-        />
-
-        {filteredBooks.length === 0 ? (
-          <div className="text-center py-5 text-muted">
-            <p className="display-1 mb-3">📚</p>
-            <h3>Книги не найдены</h3>
-            <p>Добавьте первую книгу или измените параметры поиска</p>
-          </div>
-        ) : (
-          <div className="row g-3 mt-2">
-            {filteredBooks.map(book => (
-              <div key={book.id} className="col-md-6">
-                <BookCard
-                  book={book}
-                  onToggle={toggleBook}
-                  onDelete={deleteBook}
-                  onRate={rateBook}
-                  onFavorite={toggleFavorite}
-                />
-              </div>
-            ))}
-          </div>
-        )}
-      </main>
-    </div>
+    <>
+      <Navbar />
+      <Hero />
+      <About />
+      <MenuManager 
+        menuItems={menuItems} 
+        onAdd={addMenuItem} 
+        onDelete={deleteMenuItem}
+      />
+      <Footer />
+    </>
   )
 }
 
