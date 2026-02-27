@@ -21,24 +21,32 @@ function MenuManager({ menuItems, onAdd, onDelete }) {
     <section id="menu" className="section py-6" style={{ background: '#f5f5f5' }}>
       <div className="container">
         <div className="section-header has-text-centered mb-6">
-          <h2 className="title is-2 has-text-dark mt-3">Популярные рационы</h2>
+          <h2 className="title is-2 has-text-dark mt-3" style={{ color: '#333333' }}>Популярные рационы</h2>
           <div className="divider" style={{ height: '3px', width: '60px', background: '#48c78e', margin: '1.25rem auto', borderRadius: '3px' }}></div>
         </div>
 
         <AddMenuItem onAdd={onAdd} />
 
         {/* Фильтры и сортировка в светлом стиле */}
-        <div className="box mb-5 p-4" style={{ background: 'white', boxShadow: '0 2px 8px rgba(0,0,0,0.1)', borderRadius: '8px' }}>
+        <div className="box mb-5 p-4" style={{ 
+          background: '#ffffff', 
+          boxShadow: '0 2px 8px rgba(0,0,0,0.1)', 
+          borderRadius: '8px',
+          border: '1px solid #e0e0e0'
+        }}>
           <div className="columns">
             <div className="column">
-              <label className="label has-text-dark" style={{ fontWeight: '600', color: '#333' }}>Фильтр по категории</label>
+              <label className="label" style={{ fontWeight: '600', color: '#333333' }}>Фильтр по категории</label>
               <div className="field has-addons">
                 {categories.map(cat => (
                   <button
                     key={cat}
-                    className={`button ${filterCategory === cat ? 'is-success' : 'is-light'}`}
+                    className="button"
                     onClick={() => setFilterCategory(cat)}
-                    style={filterCategory === cat ? { background: '#48c78e', color: 'white', border: 'none' } : { background: '#f5f5f5', color: '#333', border: '1px solid #dbdbdb' }}
+                    style={filterCategory === cat ? 
+                      { background: '#48c78e', color: 'white', border: 'none', fontWeight: '500' } : 
+                      { background: '#f5f5f5', color: '#333333', border: '1px solid #dbdbdb', fontWeight: '500' }
+                    }
                   >
                     {cat === 'all' ? 'Все' : cat}
                   </button>
@@ -46,12 +54,16 @@ function MenuManager({ menuItems, onAdd, onDelete }) {
               </div>
             </div>
             <div className="column">
-              <label className="label has-text-dark" style={{ fontWeight: '600', color: '#333' }}>Сортировка</label>
+              <label className="label" style={{ fontWeight: '600', color: '#333333' }}>Сортировка</label>
               <div className="select is-fullwidth">
                 <select 
                   value={sortBy} 
                   onChange={(e) => setSortBy(e.target.value)} 
-                  style={{ color: '#333', borderColor: '#dbdbdb' }}
+                  style={{ 
+                    color: '#333333', 
+                    borderColor: '#dbdbdb',
+                    backgroundColor: '#ffffff'
+                  }}
                 >
                   <option value="default">По умолчанию</option>
                   <option value="name">По названию</option>
@@ -65,7 +77,12 @@ function MenuManager({ menuItems, onAdd, onDelete }) {
 
         {/* Сетка карточек меню */}
         {sortedAndFilteredItems.length === 0 ? (
-          <div className="notification is-warning has-text-centered" style={{ background: '#fff3cd', color: '#856404', border: '1px solid #ffeeba' }}>
+          <div className="notification" style={{ 
+            background: '#fff3cd', 
+            color: '#856404', 
+            border: '1px solid #ffeeba',
+            borderRadius: '8px'
+          }}>
             Нет позиций в этой категории. Добавьте новую!
           </div>
         ) : (
