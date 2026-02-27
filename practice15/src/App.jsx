@@ -2,7 +2,10 @@ import { useState, useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
+import Advantages from './components/Advantages'
 import MenuManager from './components/MenuManager'
+import Reviews from './components/Reviews'
+import Order from './components/Order'
 import Footer from './components/Footer'
 
 function App() {
@@ -55,11 +58,14 @@ function App() {
       <Navbar />
       <Hero />
       <About />
+      <Advantages />
       <MenuManager 
         menuItems={menuItems} 
         onAdd={addMenuItem} 
         onDelete={deleteMenuItem}
       />
+      <Reviews />
+      <Order />
       <Footer />
     </>
   )

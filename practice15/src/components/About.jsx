@@ -16,33 +16,50 @@ function About() {
               Мы создаём рационы, которые не только полезны, но и невероятно вкусны. Наши блюда готовятся из свежих продуктов, доставляются прямо к вашей двери и помогают поддерживать энергию в течение всего дня.
             </p>
             <p className="is-size-5 has-text-white">
-              Наша миссия — сделать здоровое питание доступным и удобным для каждого.
+              Наша миссия — сделать здоровое питание доступным и удобным для каждого. Мы учитываем ваши предпочтения и цели: похудение, поддержание формы, набор мышечной массы или просто здоровая привычка.
             </p>
+            
+            <div className="mt-5">
+              <div className="columns is-mobile">
+                <div className="column">
+                  <div className="has-text-centered">
+                    <span className="icon is-large has-text-white"><i className="fas fa-heart fa-2x"></i></span>
+                    <p className="has-text-white mt-2">Без ГМО</p>
+                  </div>
+                </div>
+                <div className="column">
+                  <div className="has-text-centered">
+                    <span className="icon is-large has-text-white"><i className="fas fa-leaf fa-2x"></i></span>
+                    <p className="has-text-white mt-2">Натурально</p>
+                  </div>
+                </div>
+                <div className="column">
+                  <div className="has-text-centered">
+                    <span className="icon is-large has-text-white"><i className="fas fa-clock fa-2x"></i></span>
+                    <p className="has-text-white mt-2">Свежее</p>
+                  </div>
+                </div>
+                <div className="column">
+                  <div className="has-text-centered">
+                    <span className="icon is-large has-text-white"><i className="fas fa-truck fa-2x"></i></span>
+                    <p className="has-text-white mt-2">Доставка</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+          
           <div className="column is-half">
-            <div className="columns is-mobile">
-              <div className="column">
-                <div className="has-text-centered">
-                  <span className="icon is-large has-text-white"><i className="fas fa-heart fa-2x"></i></span>
-                  <p className="has-text-white mt-2">Без ГМО</p>
-                </div>
+            <div className="card" style={{ borderRadius: '12px', overflow: 'hidden' }}>
+              <div className="card-image">
+                <figure className="image is-4by3">
+                  <img src="https://images.apteka.ru/kak-sostavit-ratsion-dlya-zdorovogo-pitaniya-bez-zhstkikh-ogranicheniy_DetailPicture_-1922120651.webp" alt="Свежие продукты" />
+                </figure>
               </div>
-              <div className="column">
-                <div className="has-text-centered">
-                  <span className="icon is-large has-text-white"><i className="fas fa-leaf fa-2x"></i></span>
-                  <p className="has-text-white mt-2">Натурально</p>
-                </div>
-              </div>
-              <div className="column">
-                <div className="has-text-centered">
-                  <span className="icon is-large has-text-white"><i className="fas fa-clock fa-2x"></i></span>
-                  <p className="has-text-white mt-2">Свежее</p>
-                </div>
-              </div>
-              <div className="column">
-                <div className="has-text-centered">
-                  <span className="icon is-large has-text-white"><i className="fas fa-truck fa-2x"></i></span>
-                  <p className="has-text-white mt-2">Доставка</p>
+              <div className="card-content has-background-light">
+                <div className="content has-text-centered">
+                  <i className="fas fa-check-circle has-text-success mr-2"></i>
+                  <span className="has-text-dark has-text-weight-bold">100% натуральные ингредиенты</span>
                 </div>
               </div>
             </div>
