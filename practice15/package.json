@@ -2,7 +2,7 @@
   "name": "practice15",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://0toxich0.github.io/practice13-16/practice15",
+  "homepage": "https://0toxich0.github.io/practice13-15/practice15",
   "type": "module",
   "scripts": {
     "dev": "vite",

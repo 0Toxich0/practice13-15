@@ -3,5 +3,5 @@ import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
   plugins: [vue()],
-  base: '/practice13-16/practice14/'
+  base: '/practice13-15/practice14/'
 })

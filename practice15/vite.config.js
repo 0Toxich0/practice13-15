@@ -3,5 +3,5 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/practice13-16/practice15/'
+  base: '/practice13-15/practice15/'
 })
