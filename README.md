@@ -1,14 +1,13 @@
-# Практические работы 13-16
+# Практические работы 13-15
 
 Репозиторий с объединёнными практическими работами 
 
 ### 📍 Главная страница
-👉 **[https://0toxich0.github.io/practice13-16/](https://0toxich0.github.io/practice13-16/)**
+👉 **[https://0toxich0.github.io/practice13-15/](https://0toxich0.github.io/practice13-15/)**
 
 ### 📂 Отдельные работы
 | № | Ссылка |
 |---|--------|
-| 1 | [https://0toxich0.github.io/practice13-16/practice13/](https://0toxich0.github.io/practice13-16/practice13/) |
-| 2️ | [https://0toxich0.github.io/practice13-16/practice14/](https://0toxich0.github.io/practice13-16/practice14/) |
-| 3️ | [https://0toxich0.github.io/practice13-16/practice15/](https://0toxich0.github.io/practice13-16/practice15/) |
-| 4️ | [https://0toxich0.github.io/practice13-16/practice16/](https://0toxich0.github.io/practice13-16/practice16/) |
+| 1 | [https://0toxich0.github.io/practice13-15/practice13/](https://0toxich0.github.io/practice13-15/practice13/) |
+| 2️ | [https://0toxich0.github.io/practice13-15/practice14/](https://0toxich0.github.io/practice13-15/practice14/) |
+| 3️ | [https://0toxich0.github.io/practice13-15/practice15/](https://0toxich0.github.io/practice13-15/practice15/) |
